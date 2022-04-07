@@ -1,0 +1,96 @@
+.details{
+    border-radius: 8px;
+    background-color: white;
+    padding-top: 1%;
+    margin-top: 14vw;
+    margin-bottom: 6%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding-bottom: 5%;
+}
+
+.details_banner_img{
+    margin-bottom: 1%;
+
+}
+.details_project_name{
+    font-family: "Verdana";
+    font-size: 3em;
+    text-align: center;
+    color: #425a6b;
+}
+
+.details_creators{
+    font-family: "Verdana";
+    font-size: 2em;
+    text-align: center;
+    color: black;
+    padding-bottom: 2%;
+}
+
+.details_info{
+    width: 100%;
+    font-family: "Arial";
+    font-size: 1.5em;
+    text-align: center;
+    color: black;
+    padding-bottom: 2%;
+    float: left;
+    text-align: center;
+}
+
+
+.details_img img{
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    display: block;
+    border: 3px solid #425a6b;
+    border-radius: 8px;
+
+}
+
+.details_img_title{
+    font-family: "Arial";
+    font-size: 1.2em;
+    text-align: center;
+    font-style: italic;
+    padding-bottom: 1.5%;
+
+}
+
+.edit_section{
+    margin-left: 20vw;
+    margin-right: 20vw;
+    font-size: 1.1em;
+
+}
+
+.edit_section a{
+
+    text-decoration: none;
+    color: white;
+    padding-bottom: 0.5%;
+    background-color: #597a91;
+    border: 3px solid #425a6b;
+    margin-bottom: 1.5%;
+    border-radius: 8px 8px 0 0;
+}
+
+.edit_section a:hover{
+    text-decoration: underline;
+
+}
+
+
+@media screen and (max-width: 992px){
+    .details{
+        margin-top: 32vw;
+    }
+}
+
+@media screen and (max-width: 762px){
+    .details{
+        margin-top: 46vw;
+    }
+}
+

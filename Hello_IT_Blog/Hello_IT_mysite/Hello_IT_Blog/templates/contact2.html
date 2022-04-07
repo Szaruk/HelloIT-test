@@ -1,0 +1,64 @@
+{% extends 'home.html' %}
+{% load static %}
+<html lang="pl" xmlns:znajdujemy="http://www.w3.org/1999/xhtml">
+<head>
+    {% block title %}
+        	Kontakt
+	{% endblock %}
+    {% block link %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">
+	{% endblock %}
+</head>
+<body>
+{% block content %}
+{% if message_name %}
+<center>
+    <h2 style="color:white">Dziękujemy za kontakt {{ message_name }} !</h2>
+    <p style="color:white">Odezwiemy się jak najszybciej</p>
+</center>
+{% else %}
+    <div>
+        <div class="map-side col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <center>
+                <p style="color:white;font-size:2.5em;"> Tu się znajdujemy : </p>
+            </center>
+            <div class="embed-responsive embed-responsive-4by3">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d20037.394036883437!2d16.99486!3d51.11447!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9c88798e6ecd3555!2sDSW%20WROC%C5%81AW!5e0!3m2!1spl!2spl!4v1613302255431!5m2!1spl!2spl"
+                    frameborder="0" class="map-view embed-responsive-item" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </div>
+        <div class="mail-side col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <center>
+                <p style="color:white;font-size:2.5em;">Zapraszamy do kontaktu!</p>
+            </center>
+            <div class="all-mail">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form">
+                        <div class="input-both">
+                            <div class="input-box">
+                                <input type="text" name="message-name" required placeholder="Imię">
+                            </div>
+                            <div class="input-box">
+                                <input name="message-email" type="email" required placeholder="Adres e-mail">
+                            </div>
+                        </div>
+                        <div class="input-box">
+                            <textarea name="message" required placeholder="Twoja wiadomość"></textarea>
+                        </div>
+                        <div>
+                            <button>Wyślij wiadomość</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <button onclick="GoUp()" class="btn_top" title="Powrót na górę strony"><i class="arrow_up fa fa-arrow-up"></i></button>
+        <div style="clear:both"></div>
+    </div>
+{% endif %}
+{% endblock %}
+{% block page_number %}
+{% endblock %}
+</body>
+</html>

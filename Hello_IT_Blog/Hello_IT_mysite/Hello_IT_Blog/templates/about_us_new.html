@@ -1,0 +1,164 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}
+  O nas
+{% endblock %}
+
+    {% block content_new %}
+    <main class="d-flex justify-content-start align-items-center flex-column">
+      <div class="scrollUp"><i class="bi bi-arrow-up-square-fill"></i></div>
+      <div class="col-12 d-flex flex-column">
+        <!-- About Us -->
+        <section
+          class="d-flex mt-5 justify-content-evenly flex-lg-row flex-column align-items-center"
+        >
+          {% for about in abouts %}
+          <div class="col-12 col-lg-5 px-3 pt-3 mx-3">
+            <h2 class="fw-bold">{{ about.title }}</h2>
+            <p>
+              {{about.content|linebreaksbr}}
+            </p>
+          </div>
+          <picture class="pt-4 px-3">
+            <img
+              class="rounded shadow img-fluid"
+              src="{% static 'img/about_us.jpg' %}"
+              alt=""
+              style="width: 30rem"
+            />
+          </picture>
+          {% endfor %}
+        </section>
+        <section
+          class="col-12 d-flex flex-column align-items-center justify-content-center px-4 test"
+        >
+          <!-- Position title -->
+          <h3 class="fw-bold my-5 text-center">Opiekunowie koła naukowego</h3>
+          <div class="col-12 position-relative">
+            <div
+              class="position-absolute fw-bold inner-group d-none d-md-flex align-items-center pe-5"
+            >
+              <i class="bi bi-arrow-right-circle-fill"></i>
+            </div>
+            <div
+              class="position-absolute fw-bold inner-group d-none d-md-flex align-items-center"
+            >
+              <i class="bi bi-arrow-right-circle-fill d-none"></i>
+            </div>
+            <div class="col-12 d-flex align-items-center inner-members">
+              <div class="outer-members d-flex justify-content-center">
+                <!-- Member -->
+                {% for people in peoples %}
+                {% if people.is_overseer %}
+                <div class="member mx-4">
+                  <a href="{{people.people_portfolio}}">
+                  <!-- Member Foto -->
+                  {% if not people.people_photo %}
+                  <img class="img-fluid rounded" src="{% static 'img/default_person.png' %}" alt="" />
+                  {% else %}
+                  <img class="img-fluid rounded" src="{{ people.people_photo }}" alt="" />
+                  {% endif %}
+                  <!-- Member Info -->
+                  <span class="member-text d-flex flex-column px-3 py-3">
+                    <span class="fw-bold text-white">{{people.people_name}} {{people.people_surname}}</span>
+                  </span>
+                  </a>
+                </div>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <!-- Position title -->
+          <h3 class="fw-bold my-5 text-center">Założyciele Koła</h3>
+          <div class="col-12 position-relative">
+            <div
+              class="position-absolute fw-bold inner-group d-none d-md-flex align-items-center pe-5"
+            >
+              <i class="bi bi-arrow-right-circle-fill"></i>
+            </div>
+            <div
+              class="position-absolute fw-bold inner-group d-none d-md-flex align-items-center"
+            >
+              <i class="bi bi-arrow-right-circle-fill d-none"></i>
+            </div>
+            <div class="col-12 d-flex align-items-center inner-members">
+              <div class="outer-members d-flex justify-content-center">
+                <!-- Member -->
+                {% for people in peoples %}
+                {% if people.is_founder %}
+                <div class="member mx-4">
+                  <a href="{{people.people_portfolio}}">
+                  <!-- Member Foto -->
+                  {% if not people.people_photo %}
+                  <img class="img-fluid rounded" src="{% static 'img/default_person.png' %}" alt="" />
+                  {% else %}
+                  <img class="img-fluid rounded" src="{{people.people_photo}}" alt="" />
+                  {% endif %}
+                  <!-- Member Info -->
+                  <span class="member-text d-flex flex-column px-3 py-3">
+                    <span class="fw-bold text-white">{{people.people_name}} {{people.people_surname}}</span>
+                  </span>
+                  </a>
+                </div>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          {% regroup people_group|dictsortreversed:"people_team.team_name" by people_team.team_name as people_list %}
+          {% for people_group in people_list %}
+          <!-- Position title -->
+          <h3 class="fw-bold my-5 text-center">{{ people_group.grouper }}</h3>
+          <div class="col-12 position-relative">
+            <div
+              class="position-absolute fw-bold inner-group d-none d-md-flex align-items-center pe-5"
+            >
+              <i class="bi bi-arrow-right-circle-fill"></i>
+            </div>
+            <div
+              class="position-absolute fw-bold inner-group d-none d-md-flex align-items-center"
+            >
+              <i class="bi bi-arrow-right-circle-fill d-none"></i>
+            </div>
+            <div class="col-12 d-flex align-items-center inner-members">
+              <div class="outer-members d-flex justify-content-center">
+                <!-- Member -->
+                {% for people_list in people_group.list %}
+                <div class="member mx-4">
+                  <a href="{{people_group.people_portfolio}}">
+                  <!-- Member Foto -->
+                  {% if not people_list.people_photo %}
+                  <img
+                    class="img-fluid rounded"
+                    src="{% static 'img/default_person.png' %}"
+                    alt=""
+                  />
+                  {% else %}
+                  <img class="img-fluid rounded" src="{{people_list.people_photo}}" alt="" />
+                  {% endif %}
+                  <!-- Member Info -->
+                  <span class="member-text d-flex flex-column px-3 py-3">
+                    <span class="fw-bold text-white">{{ people_list.people_name }} {{ people_list.people_surname }}</span>
+                    <span class="text-white">{{ people_list.people_position }}</span>
+                  </span>
+                  </a>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </section>
+      </div>
+      {% block page_number %}
+      {% endblock %}
+    </main>
+
+    {% block sponsors %}
+    {% endblock %}
+
+    {% endblock %}
+

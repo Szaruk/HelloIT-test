@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pl">
+
+<title>{% block title %}Strona Główna{% endblock %}</title>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="{% static 'img/ciacho_biale.png' %}"/>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/fontello.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/project-buttons.css' %}"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="{% static 'js/scripts.js' %}"></script>
+	{% block link %}
+	{% endblock %}
+</head>
+<body>
+		<div id="menu" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div id="left-menu" class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><a href="https://www.facebook.com/HIThelloit"><i class="fa fa-facebook-official fa-2x" style="color: white;"></i></a></div>
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><a href="mailto:hit.helloit@gmail.com"><i class="fa fa-envelope fa-2x" style="color: white;"></i></a></div>
+			</div>
+
+			<div id="right-menu" class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+				{% if user.is_authenticated %}
+					{% if user.is_staff %}
+					<div class="col-lg-9 col-md-8 col-sm-8 col-xs-6"></div>
+					<div id="home_dropdown" class="dropdown col-lg-1 col-md-2 col-sm-2 col-xs-6">
+						<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+							Panel użytkownika <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" style="width: 6vw;">
+							<li class="dropdown-header">Witaj {{ user.username }}</li>
+							<li><a href="{% url 'add_post' %}">DODAJ POST</a></li>
+							<li><a href="{% url 'add_category' %}">DODAJ KATEGORIE</a></li>
+							<li><a href="{% url 'add_person' %}">DODAJ OSOBĘ</a></li>
+							<li><a href="{% url 'choose_project_type' %}">DODAJ PROJEKT...</a></li>
+							<li><a href="{% url 'choose_img_type' %}">DODAJ SEKCJĘ...</a></li>
+							<li class="divider"></li>
+							<li><a href="{% url 'logout' %}" style="color: red;">WYLOGUJ</a></li>
+						</ul>
+					</div>
+					{% else %}
+					<div class="col-lg-6 col-md-6 col-sm-5 col-xs-4"></div>
+					<div class="menu-buttons2 col-lg-2 col-md-3 col-sm-4 col-xs-4">Witaj {{ user.username }}</div>
+					<div class="menu-buttons2 col-lg-2 col-md-3 col-sm-3 col-xs-5"><a href="{% url 'logout' %}" style="color: red;">WYLOGUJ</a></div>
+					{% endif %}
+				{% endif %}
+			</div>
+		</div>
+		<a href="{% url 'home_page' %}"><img src="{% static 'img/logo.jpg' %}" class="img-responsive"></a>
+		{% block information %}
+		<div id="information" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="information-button col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="{% url 'about_people' %}">O NAS</a></div>
+			<div class="information-button col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="{% url 'projects' %}">PROJEKTY</a></div>
+			<div class="information-button col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="{% url 'regulations' %}">REGULAMIN</a></div>
+			<div class="information-button col-lg-3 col-md-3 col-sm-12 col-xs-12"><a href="{% url 'contact' %}">KONTAKT</a></div>
+		</div>
+		{% endblock %}
+			<div id="container" class="container-fluid">
+			{% block content %}
+			<div id="left-side" class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+				<center><strong style="font-size: 2em;">KATEGORIE</strong></center>
+					<ul>
+						<li><a href="{% url 'home_page' %}">Wszystkie</a></li>
+					</ul>
+				{% for item in cat_menu %}
+					<ul>
+						<li><a href="{% url 'category' item%}">{{ item }}</a></li>
+					</ul>
+				{% endfor %}
+			</div>
+			<div id="cat_dropdown" class="dropdown col-lg-1 col-md-1 col-sm-12 col-xs-12">
+				<button class="btn btn-block dropdown-toggle" type="button" data-toggle="dropdown">Kategorie
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" style="width: 100%;">
+					<li><a href="{% url 'home_page' %}">Wszystkie</a></li>
+					{% for item in cat_menu %}
+						<li><a href="{% url 'category' item%}">{{ item }}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div id="right-side" class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+				{% for post in object_list %}
+				<a href="{% url 'post_details' post.slug_field %}">
+				<div class="post col-lg-5 col-md-5 col-sm-12 col-xs-12">
+					<img src="{{ post.header_image }} " class="img-responsive">
+					<div class="post-title">{{ post.title }}</div>
+					<div class="post-author">by {{ post.author }}</div>
+					<div class="data-published">{{ post.create_date }}</div>
+					<div class="short-text-post">{{ post.text|truncatechars_html:130 }}</div>
+					<div class="category">{{post.category}}</div>
+					<div class="read-more"><a href="{% url 'post_details' post.slug_field %}">Czytaj więcej</a></div>
+				</div>
+				</a>
+				{% endfor %}
+			</div>
+			<button onclick="GoUp()" class="btn_top" title="Powrót na górę strony"><i class="arrow_up fa fa-arrow-up"></i></button>
+			{% endblock %}
+
+		</div>
+		{% block page_number %}
+		{% include "pagination_new.html" with page=page_obj %}
+		{% endblock %}
+		<div id="footer" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&copy Hello IT 2021</div>
+</body>
+</html>

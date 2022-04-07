@@ -1,0 +1,65 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+{{post.category}}
+{% endblock %}
+
+
+{% block content_new %}
+    <main>
+      <div class="scrollUp"><i class="bi bi-arrow-up-square-fill"></i></div>
+      <!-- Category -->
+      <div
+        class="py-5 category-main d-flex justify-content-center align-items-center"
+      >
+        <div class="category-container d-flex align-items-center">
+          <div class="category-button shadow white_url">
+            <span><i class="bi bi-list-ul"></i><a href="{% url 'home_page' %}"> Wszystkie</a></span>
+          </div>
+          {% for item in cat_menu_list %}
+          <div class="category-button shadow white_url">
+            <span><i class="bi bi-people"></i><a href="{% url 'category' item%}">{{ item }}</a></span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!--- Posts --->
+
+      <div
+        class="container-fluid d-flex justify-content-evenly flex-wrap pt-3"
+        id="post-main"
+      >
+        {% for post in category_posts %}
+        <a href="{% url 'post_details' post.slug_field %}">
+          <div class="card shadow">
+            <img src="{{ post.header_image }}" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <div class="card-title text-center h3 py-3">{{ post.title }}</div>
+              <p class="card-text py-3">
+                {{ post.text|truncatechars_html:130 }}
+              </p>
+              <div
+                class="d-flex justify-content-between align-items-center fw-bold"
+              >
+                <p>{{ post.create_date }}</p>
+                <p class="d-flex align-items-center">
+                  Czytaj więcej
+                  <i class="bi bi-arrow-right-circle fs-4 ms-1"></i>
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+
+<!-- Pagination -->
+      {% block page_number %}
+      {% include "pagination_new.html" with page=page_obj %}
+      {% endblock %}
+
+    </main>
+{% endblock %}
+

@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+    Regulamin
+{% endblock %}
+
+{% block logo_loader %}
+{% endblock %}
+
+{% block content_new %}
+    <main class="mt-5">
+      <div class="scrollUp"><i class="bi bi-arrow-up-square-fill"></i></div>
+      <section class="mb-4 statute-point">
+        {% regroup regulations_section by SectionName as section_list %}
+        {% for regulations_section in section_list %}
+        <h4 class="fw-bold text-white py-4 px-4 statute-title text-center">
+          {{ regulations_section.grouper }}
+        </h4>
+        <ul class="mx-4 mt-3">
+          {% for section_list in regulations_section.list %}
+          <li class="py-4 lh-lg">
+            {{ section_list.SectionData }}
+          </li>
+          {% endfor %}
+        </ul>
+        {% endfor %}
+      </section>
+
+      {% block page_number %}
+      {% endblock %}
+    </main>
+
+    {% block sponsors %}
+    {% endblock %}
+
+{% endblock %}
+

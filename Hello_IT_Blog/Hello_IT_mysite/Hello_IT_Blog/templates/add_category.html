@@ -1,0 +1,29 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block title %}
+Dodaj kategorie
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/add_post.css' %}">
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    {% if user.is_staff %}
+    <div class="form-add-post col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Dodaj Kategorie">
+        </form>
+    </div>
+    {% endif %}
+{% else %}
+<strong style="color:#ffffff;">Nie posiadasz uprawnień aby dodawać kategorie</strong>
+{% endif %}
+    {% endblock %}
+
+{% block page_number %}
+	{% endblock %}

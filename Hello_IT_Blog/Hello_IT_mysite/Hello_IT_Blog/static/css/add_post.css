@@ -1,0 +1,50 @@
+p
+{
+	color:#ffffff;
+    font-size: 3.5vh;
+	font-weight: bold;
+}
+
+body{
+    height: auto;
+}
+
+.form-control
+{
+	border-radius: 1%;
+	border:solid #425A6B 2px;
+}
+
+input[type=text]{
+    font-size: 0.8em;
+    color: black;
+}
+
+input[type=password]{
+    color: black;
+    font-size: 0.8em;
+}
+
+textarea{
+    font-size: 0.8em;
+    text-align:justify;
+    line-height: 200%;
+    color: black;
+}
+input[type=submit]{
+
+    font-size: 2em;
+	cursor:pointer;
+	border: none;
+	border-radius: 8px;
+	background-color: #425A6B;
+	color:#ffffff;
+	float: right;
+}
+input[type=submit]:hover{
+	opacity: 0.8;
+}
+select{
+    font-size: 0.8em;
+    min-height: 4vmin;
+}

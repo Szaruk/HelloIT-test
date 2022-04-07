@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+{{otherproject.project_name}}
+{% endblock %}
+
+  {% block photo_gallery %}
+    <div
+      class="col-12 d-none justify-content-center align-items-center foto-box"
+    >
+      <div class="col-lg-8 col-11 foto-border">
+        <img class="img-fluid rounded" src="{{otherimage.img}}" alt="" />
+        <!-- Exit -->
+        <i class="bi bi-x-square-fill exit-box"></i>
+        <!-- Arrow --->
+        <i class="bi bi-arrow-left-square-fill"></i>
+        <i class="bi bi-arrow-right-square-fill"></i>
+      </div>
+    </div>
+  {% endblock %}
+
+  {% block logo_loader %}
+  {% endblock %}
+
+{% block content_new %}
+    <main class="container-fluid d-flex flex-column align-items-center my-4">
+      <div class="scrollUp"><i class="bi bi-arrow-up-square-fill"></i></div>
+      <picture class="col-12 col-md-10 col-lg-5 pb-3 rounded">
+        <img class="img-fluid rounded" src="{{ otherproject.banner_img}}" alt="" />
+      </picture>
+      <article
+        class="col-12 col-md-10 col-lg-9 border-1 border-top border-bottom border-dark py-4 px-3"
+      >
+        <p>
+          {{ otherproject.full_info|linebreaksbr|urlize }}
+        </p>
+
+      </article>
+      <h3 class="fw-bold py-3">Galeria zdjęć</h3>
+      <div
+        class="col-12 col-lg-9 d-flex game-gallery py-3 rounded flex-wrap justify-content-evenly"
+      >
+        {% for otherimage in otherproject.otherimg_set.all %}
+        <img
+          class="img-fluid foto-gallery my-4 mx-2 rounded"
+          src="{{otherimage.img}}"
+          alt=""
+        />
+        {% endfor %}
+      </div>
+
+    {% block page_number %}
+    {% endblock %}
+
+    </main>
+
+    {% block sponsors %}
+    {% endblock %}
+
+{% endblock %}
+
+{% block scripts %}
+    <!--<script src="{% static '/js/project_details.js' %}"></script>-->
+{% endblock %}
+

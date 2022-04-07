@@ -1,0 +1,125 @@
+.project_preview{
+    min-height: 50vmin;
+    max-height: 140vmax;
+    padding-top: 1%;
+    background-color: white;
+    border-radius: 8px;
+    float: left;
+    margin-top: 1.2%;
+    margin-bottom: 1.5%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-right: 1.3%;
+    text-align: center;
+    transition: 0.3s;
+
+}
+
+a{
+    text-decoration: none;
+    color: #000000;
+
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+.project_preview:hover{
+    background-color: #d4d4d4;
+
+}
+
+.project_preview:hover img{
+    opacity: 1;
+
+}
+
+.project_preview img{
+    max-height: 50vh;
+    opacity: 0.9;
+    transition: 0.3s;
+
+}
+
+.project_name{
+    font-family: "Verdana";
+    font-size: 2em;
+    color: #425a6b;
+
+}
+
+.project_creators{
+    font-family: "Verdana";
+    font-size: 1.5em;
+    text-align: center;
+    color: black;
+    padding-bottom: 1.2%;
+
+}
+
+.project_info{
+    font-family: "Verdana";
+    font-size: 1em;
+    text-align: center;
+    color: black;
+
+}
+
+.projects_edit{
+    padding-top: 1%;
+    padding-bottom: 2%;
+}
+
+.projects_edit a{
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.projects_edit a:hover{
+    text-decoration: underline;
+}
+
+#projects_dropdown button{
+    background-color: #425a6b;
+    color: white;
+}
+
+.dropdown-menu{
+    background-color: #759FBD;
+    color: white;
+}
+
+.dropdown-header{
+    color: #425a6b;
+}
+
+#projects_dropdown a{
+    color: white;
+}
+
+#projects_dropdown a:hover{
+    color: #759FBD;
+}
+
+@media screen and (max-width: 992px){
+    #projects_dropdown{
+        visibility: visible;
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        background-color: #425a6b;
+        color: white;
+    }
+
+    #left-side{
+        visibility: hidden;
+        position: fixed;
+    }
+}
+
+@media screen and (min-width: 992px){
+    #projects_dropdown{
+        visibility: hidden;
+    }
+}
+

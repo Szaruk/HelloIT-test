@@ -1,0 +1,18 @@
+{% if page.has_previous or page.has_next %}
+      <div class="d-flex justify-content-center">
+        <div
+          class="d-flex justify-content-center align-items-center py-3 px-3 fs-5 fw-bold pagination"
+        >
+            {% if page.has_previous %}
+            <a href="?page={{ page.previous_page_number }}"><i class="bi bi-arrow-left-circle pe-3 site-btn"></i></a>
+            {% endif %}
+
+            Strona {{ page.number }} z {{ page.paginator.num_pages }}
+
+            {% if page.has_next %}
+          <a href="?page={{ page.next_page_number }}"><i class="bi bi-arrow-right-circle ps-3 site-btn"
+          ></i></a>
+            {% endif %}
+        </div>
+      </div>
+{% endif %}

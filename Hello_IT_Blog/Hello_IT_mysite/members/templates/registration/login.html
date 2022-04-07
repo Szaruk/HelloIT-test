@@ -1,0 +1,28 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block title %}
+Logowanie
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/add_post.css' %}">
+{% endblock %}
+{% block information %}
+{% endblock %}
+{% block content %}
+    <div class="form-add-post col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Login">
+        </form>
+    </div>
+{% endblock %}
+
+{% block page_number %}
+<br/>
+<br/>
+<br/>
+
+{% endblock %}

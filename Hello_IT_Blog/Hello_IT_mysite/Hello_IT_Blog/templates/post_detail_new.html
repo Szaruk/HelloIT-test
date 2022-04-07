@@ -1,0 +1,69 @@
+{% extends 'index.html' %} {% load static %} {% block title %} {{post.title}} {%
+endblock %} {% block logo_loader %} {% endblock %} {% block content_new %}
+<main class="d-flex justify-content-center mt-5 flex-wrap">
+  <div class="scrollUp"><i class="bi bi-arrow-up-square-fill"></i></div>
+
+  <!--- Post Detail --->
+  <div
+    class="col-11 col-md-10 col-lg-8 d-flex justify-content-start align-items-center flex-column px-3"
+    id="postDetail"
+  >
+    <div class="col-12 col-md-9 rounded-3 mb-3 shadow">
+      <img
+        class="rounded-3"
+        style="width: 100%"
+        src="{{ post.header_image }}"
+        alt=""
+      />
+    </div>
+    <article>
+      <h1 class="text-center">{{ post.title }}</h1>
+      <div class="col-12 px-3 border-1 border-top border-dark pt-4">
+        <p class="lh-lg">{{ post.text|linebreaksbr|urlize }}</p>
+      </div>
+    </article>
+  </div>
+  <!-- Post More -->
+  <section
+    class="col-11 col-md-8 col-lg-4 d-flex flex-column justify-content-start align-items-center"
+    id="postDetailsMore"
+  >
+    <h4
+      class="text-center col-10 py-3 fw-bold border-bottom border-1 border-dark"
+    >
+      Zobacz również
+    </h4>
+    {% for post in posts %}
+    <a class="post-more-link" href="{% url 'post_details' post.slug_field %}">
+      <div
+        class="col-11 col-lg-9 col-md-9 border my-5 post-more shadow rounded-3"
+      >
+        {% if not post.header_image %}
+        <img
+          class="rounded-3"
+          style="width: 100%"
+          src="{% static 'img/logo.png' %}"
+          alt=""
+        />
+        {% else %}
+        <img
+          class="rounded-3"
+          style="width: 100%"
+          src="{{ post.header_image }}"
+          alt=""
+        />
+
+        {% endif %}
+        <div class="post-more-text col-12 text-white px-2 py-2 text-center">
+          {{ post.text|truncatechars_html:80 }}
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </section>
+  {% block page_number %} {% endblock %}
+</main>
+
+{% block sponsors %} {% endblock %} {% endblock %} {% block scripts %}
+<script src="{% static 'js/post_details.js' %}"></script>
+{% endblock %}

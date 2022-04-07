@@ -1,0 +1,31 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block title %}
+    Usuń sekcję: {{ projectimg.help_title }}
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/add_post.css' %}">
+{% endblock %}
+{% block information %}
+{% endblock %}
+{% block content %}
+    {% if user.is_authenticated %}
+    <div class="form-add-post col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <strong style="color:#ffffff;">Czy jesteś pewien, że chcesz usunąć ten obrazek: {{ projectimg.help_title }}</strong>
+            <img src="{{ projectimg.img }}">
+            <input type="submit" value="Usuń">&nbsp;
+        </form>
+        <div style="clear:both; margin-top:40px;"><a href="{% url 'projects' %}" ><input type="submit" value="Cofnij"></a></div>
+
+    </div>
+    {% else %}
+    <strong style="color:#ffffff;">Nie posiadasz uprawnień aby usuwać sekcje</strong>
+    {% endif %}
+{% endblock %}
+
+{% block page_number %}
+{% endblock %}

@@ -1,0 +1,185 @@
+h1{
+    color: white;
+}
+
+h3{
+
+    color: #425a6b;
+}
+
+.people_button{
+    border: none;
+    background-color:transparent;
+    cursor: pointer;
+    min-height: 30vmax;
+    max-height: 70vmax;
+    margin-bottom: 2vmin;
+
+}
+
+.people_button:focus{
+
+    outline: none;
+}
+
+.about_img{
+    margin-bottom: 1%;
+
+    border-radius: 8px 8px 0 0;
+}
+
+.about_img img{
+
+    border-radius: 8px 8px 0 0;
+
+}
+
+.about{
+    font-family: 'Verdana';
+    text-align: justify;
+    background-color: white;
+    border-radius: 8px;
+    margin-bottom: 2%;
+
+}
+
+.about a{
+    color: #425a6b;
+    text-decoration: none;
+    padding-left: 0.5%;
+}
+
+.about_text{
+    padding-left: 1%;
+    font-family: 'Verdana';
+    text-align: justify;
+    padding-left: 1%;
+    padding-bottom: 2%;
+    padding-right: 1.5%;
+}
+
+.preview_content{
+    min-height: 30vmax;
+    max-height: 70vmax;
+    border-radius: 8px;
+    padding: 0.1%;
+    background-color: white;
+    float: left;
+    margin-right: 2%;
+    margin-bottom: 2vmin;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: 0.3s;
+}
+
+.preview_content:hover{
+    background-color: #d4d4d4;
+}
+
+.preview-image{
+    display: block;
+
+
+}
+
+.preview-image img{
+    display: block;
+
+    border-radius: 8px 8px 0 0 ;
+}
+
+.preview-name{
+    text-align: center;
+    color: #425a6b;
+    font-family: 'Verdana';
+    font-size: 1em;
+    margin-top: 1.1%;
+}
+
+.people_edit{
+    padding-top: 1.5%;
+
+}
+
+.people_edit a{
+    color: black;
+    text-decoration: none;
+}
+
+.people_edit a:hover{
+    text-decoration: underline;
+}
+
+#about_dropdown button{
+    background-color: #425a6b;
+    color: white;
+}
+
+.dropdown-menu{
+    background-color: #759FBD;
+    color: white;
+}
+
+.dropdown-header{
+    color: #425a6b;
+}
+
+#about_dropdown a{
+    color: white;
+}
+
+#about_dropdown a:hover{
+    color: #759FBD;
+}
+
+
+@media screen and (max-width: 992px){
+    #about_dropdown{
+        visibility: visible;
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        background-color: #425a6b;
+        color: white;
+    }
+
+
+    #left-side{
+        visibility: hidden;
+        position: fixed;
+    }
+
+
+
+}
+
+@media screen and (min-width: 992px){
+    #about_dropdown{
+        visibility: hidden;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px){
+    .preview_content{
+        min-height: 43vmax;
+    }
+
+}
+
+
+@media screen and (min-width: 992px) and (max-width: 1200px){
+    .preview_content{
+        min-height: 35vmax;
+    }
+}
+
+@media (max-width: 480px) {
+    #home_dropdown.col-xs-6{
+        width: default;
+    }
+
+    .people_button{
+        width: 100%;
+    }
+}
+
+

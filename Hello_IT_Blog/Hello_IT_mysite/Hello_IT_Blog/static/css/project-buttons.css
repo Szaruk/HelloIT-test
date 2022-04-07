@@ -1,0 +1,92 @@
+html{
+    scroll-behavior: smooth;
+}
+
+.prev_next a{
+    color: white;
+
+}
+
+.prev_next{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    font-size: 1.5em;
+    font-family: "Verdana";
+    text-align: center;
+    text-overflow: ellipsis;
+    z-index: 98;
+    color: white;
+
+}
+
+.prev_next p{
+    font-size: 0.8em;
+    color: white;
+
+}
+
+.prev, .next, .home_button{
+    background-color: #425a6b;
+    transition: 0.3s;
+    float: left;
+    padding-top: 1%;
+    min-height: 10vmin;
+    max-height: 13vmin;
+
+}
+
+
+.next:hover, .prev:hover, .home_button:hover{
+    background-color: #597a91;
+}
+
+.home_button{
+    background-color: #425a6b;
+    font-size: 2em;
+}
+
+.btn_top{
+    display: none;
+    position: fixed;
+    bottom: 15%;
+    right: 5%;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #425a6b;
+    color: white;
+    cursor: pointer;
+    padding: 3vmin;
+    transition: 0.3s;
+}
+
+button.btn_top{
+    width: auto;
+    height: auto;
+}
+
+.btn_top:hover{
+    background-color: #597a91;
+}
+
+.arrow_up{
+    font-size: 2em;
+}
+
+@media screen and (max-width: 762px){
+    .prev, .next, .home_button{
+        min-height: 7vmax;
+        max-height: 10vmax;
+
+    }
+
+    .prev_next{
+        font-size: 0.8em;
+    }
+
+    .prev_next p{
+        font-size: 0.6em;
+    }
+}
+

@@ -1,0 +1,30 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block title %}
+    Usuń projekt: {{ project.project_name }}
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/add_post.css' %}">
+{% endblock %}
+{% block information %}
+{% endblock %}
+{% block content %}
+    {% if user.is_authenticated %}
+    <div class="form-add-post col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <strong style="color:#ffffff;">Czy jesteś pewien, że chcesz usunąć ten projekt: {{ project.project_name }}</strong>
+            <input type="submit" value="Usuń">&nbsp;
+        </form>
+        <div style="clear:both; margin-top:40px;"><a href="{% url 'projects' %}" ><input type="submit" value="Cofnij"></a></div>
+
+    </div>
+    {% else %}
+    <strong style="color:#ffffff;">Nie posiadasz uprawnień aby usuwać projekty</strong>
+    {% endif %}
+{% endblock %}
+
+{% block page_number %}
+{% endblock %}

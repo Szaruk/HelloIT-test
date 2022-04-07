@@ -1,0 +1,1 @@
+web: gunicorn --chdir /app/Hello_IT_Blog/Hello_IT_mysite/ Hello_IT_mysite.wsgi --log-file -

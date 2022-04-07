@@ -1,0 +1,86 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}
+  Projekty
+{% endblock %}
+
+{% block logo_loader %}
+{% endblock %}
+
+{% block content_new %}
+    <main class="d-flex justify-content-start align-items-center flex-column">
+      <div class="scrollUp"><i class="bi bi-arrow-up-square-fill"></i></div>
+
+      <div class="col-12 d-flex flex-column mt-5">
+        <h3
+          class="ms-3 py-2 fw-bold col-lg-3 col-md-6 col-8 border-bottom border-2 border-dark text-center"
+        >
+          Nasze projekty
+        </h3>
+        <div class="inner-project">
+          <div class="project-btn-r d-flex align-items-center px-1">
+            <i class="bi bi-arrow-right-circle-fill"></i>
+          </div>
+          <div class="project-btn-l d-none align-items-center">
+            <i class="bi bi-arrow-right-circle-fill"></i>
+          </div>
+          <div
+            class="col-12 d-flex px-4 py-5 justify-content-start our-projects"
+          >
+            {% if not projects %}
+              <img class="mx-sm-5 mx-3" src="{% static 'img/placeholder_white.jpg' %}"
+               alt="Alan, dodaj tu więcej szczegółów" />
+            {% else %}
+            {% for project in projects %}
+            <a href="{% url 'projects_view' project.slug_field %}">
+              <img class="mx-sm-5 mx-3" src="{{project.preview_img}}"
+               alt="{{project.project_name}}, tworzony przez {{project.team_name.team_name}}"
+               title="{{project.project_name}}, tworzony przez {{project.team_name.team_name}}" />
+            </a>
+            {% endfor %}
+            {% endif %}
+
+          </div>
+        </div>
+        <h3
+          class="ms-3 py-2 fw-bold col-lg-3 col-md-6 col-8 border-bottom border-2 border-dark text-center"
+        >
+          Inne projekty
+        </h3>
+        <div class="inner-project">
+          <div class="project-btn-r d-flex align-items-center px-1">
+            <i class="bi bi-arrow-right-circle-fill"></i>
+          </div>
+          <div class="project-btn-l d-none align-items-center">
+            <i class="bi bi-arrow-right-circle-fill"></i>
+          </div>
+          <div
+            class="col-12 d-flex px-4 py-5 justify-content-start our-projects"
+          >
+            {% if not otherprojects %}
+              <img class="mx-sm-5 mx-3" src="{% static 'img/placeholder_white.jpg' %}"
+               alt="Alan, dodaj tu więcej szczegółów" />
+            {% else %}
+            {% for otherproject in otherprojects %}
+            <a href="{% url 'projects_view2' otherproject.slug_field %}">
+              <img class="mx-sm-5 mx-3" src="{{otherproject.preview_img}}"
+               alt="{{otherproject.project_name}}, stworzony przez {{otherproject.creators_name}}"
+               title = "{{otherproject.project_name}}, stworzony przez {{otherproject.creators_name}}" />
+            </a>
+            {% endfor %}
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+      {% block page_number %}
+      {% endblock %}
+
+    </main>
+
+    {% block sponsors %}
+    {% endblock %}
+
+{% endblock %}
+
+

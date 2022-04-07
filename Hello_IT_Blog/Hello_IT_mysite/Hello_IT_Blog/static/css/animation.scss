@@ -1,0 +1,87 @@
+// Keyframes Animation Hamburger, Exit
+
+@keyframes hamburgerHide {
+  0% {
+    transform: rotate(0) scale(2.5) translateY(0px);
+  }
+  50% {
+    transform: rotate(90deg) scale(2.5) translateY(0px);
+  }
+  100% {
+    transform: translateY(-90px) scale(2.5) rotate(90deg);
+  }
+}
+
+@keyframes hamburgerShow {
+  0% {
+    transform: translateY(-90px) scale(2.5) rotate(90deg);
+  }
+  50% {
+    transform: rotate(90deg) scale(2.5) translateY(0px);
+  }
+  100% {
+    transform: rotate(0) scale(2.5) translateY(0px);
+  }
+}
+
+@keyframes exitShow {
+  0% {
+    transform: translateY(-100px) scale(0);
+  }
+  100% {
+    transform: translateY(25px) scale(2.5);
+  }
+}
+
+@keyframes exitHide {
+  0% {
+    transform: translateY(25px) scale(2.5);
+  }
+  100% {
+    transform: translateY(-100px) scale(0);
+  }
+}
+
+@keyframes showHamburgerMenu {
+  0% {
+    transform: translateX(-800px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes hideHamburgerMenu {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-800px);
+  }
+}
+
+// Hamburger Animation
+
+.hamburger-hide {
+  animation: hamburgerHide 0.5s both ease-in-out;
+}
+
+.hamburger-show {
+  animation: hamburgerShow 0.5s 0.2s both ease-in-out;
+}
+
+.exitShow {
+  animation: exitShow 0.5s 0.2s both ease-in-out;
+}
+
+.exitHide {
+  animation: exitHide 0.5s both ease-in-out;
+}
+
+.showHamburgerMenu {
+  animation: showHamburgerMenu 0.5s both ease-in-out;
+}
+
+.hideHamburgerMenu {
+  animation: hideHamburgerMenu 0.5s both ease-in-out;
+}
