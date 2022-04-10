@@ -3,7 +3,7 @@ const logoLoader = document.querySelector("#logo-loader");
 const logoImage = document.querySelector("#logo-img");
 const logoText = document.querySelector(".logo-text");
 const container = document.querySelector("#container-loader");
-const categoryMain = document.querySelector(".category-container");
+const categoryMain = document.querySelector(".category-main");
 const post = document.querySelector("#post-main");
 const body = document.querySelector("body");
 
@@ -157,62 +157,6 @@ const AnimationHamburger = () => {
     hamburger.classList.remove("hamburger-hide");
     hamburger.classList.add("hamburger-show");
   });
-};
-
-const CategorySlider = () => {
-  //Animation Category
-  if (window.innerWidth < 4096) {
-    const categorySlider = document.querySelector(".category-main");
-    const innerCategorySlider = document.querySelector(".category-container");
-    let pressed = false;
-    let startx;
-    let x;
-
-    if(!categorySlider){
-       var somethingBroke = 0;
-       somethingBroke += 1;
-       console.log(somethingBroke);
-    }else{
-
-    categorySlider.addEventListener("mousedown", (e) => {
-      pressed = true;
-      startx = e.offsetX - innerCategorySlider.offsetLeft;
-      categorySlider.style.cursor = "grabbing";
-    });
-
-    categorySlider.addEventListener("mouseenter", () => {
-      categorySlider.style.cursor = "grab";
-    });
-
-    categorySlider.addEventListener("mouseup", () => {
-      categorySlider.style.cursor = "grab";
-    });
-
-    window.addEventListener("mouseup", () => {
-      pressed = false;
-    });
-
-    categorySlider.addEventListener("mousemove", (e) => {
-      if (!pressed) return;
-      e.preventDefault();
-
-      x = e.offsetX;
-
-      innerCategorySlider.style.left = `${x - startx}px`;
-      checkboundary();
-    });
-    }
-
-    function checkboundary() {
-      let outer = categorySlider.getBoundingClientRect();
-      let inner = innerCategorySlider.getBoundingClientRect();
-      if (parseInt(innerCategorySlider.style.left) > 0) {
-        innerCategorySlider.style.left = "0px";
-      } else if (inner.right < outer.right) {
-        innerCategorySlider.style.left = `-${inner.width - outer.width}px`;
-      }
-    }
-  }
 };
 //Scroll Up
 const scrollUp = document.querySelector(".scrollUp");
@@ -406,7 +350,6 @@ const aboutUsSlider = () => {
 if (location.pathname === "/index.html" || location.pathname === "/") {
   body.scrollIntoView();
   AnimationMain();
-  CategorySlider();
 } else if (location.pathname === "/statute/") {
   statuteTitlesAnimation();
 } else if (location.pathname === "/projects/") {
@@ -415,10 +358,9 @@ if (location.pathname === "/index.html" || location.pathname === "/") {
   aboutUsSlider();
 } else if (location.pathname === "/contact/"){
     console.log("Strona z kontaktem. LOL - EASTER EGG");
-} else {
-    body.scrollIntoView();
-    AnimationMain();
-    CategorySlider();
+}else if(location.pathname === "/category/Spotkania/" || location.pathname === "/category/Komunikaty/"){
+  body.scrollIntoView();
+  AnimationMain();
 }
 //Mobile animation navbar
 AnimationHamburger();

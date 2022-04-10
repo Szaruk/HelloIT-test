@@ -27,8 +27,8 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'l8m!o-(b2q02dcxj_q&h7c&j577n7q
 # SECURITY WARNING: don't run with debug turned on in production!
 # Usuń znacznik komentarza z DEBUG=True i dodaj do DEBUG=False, jeśli testujesz na serwerze lokalnym.
 # NIE ZAPOMNIJ PRZYWRÓCIĆ TEGO DO DOMYŚLNYCH WARTOŚCI KIEDY ROBISZ COMMITA!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+#DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'hello-it.herokuapp.com','localhost', '192.168.1.163']
 
@@ -153,10 +153,10 @@ prod_db = dj_database_url.config(conn_max_age=500, ssl_require=True)
 DATABASES['default'].update(prod_db)
 
 # Jeśli zamierzasz bawić się na serwerze lokalnym, usuń komentarze z górnych i dodaj je do dolnych.
-# SESSION_COOKIE_SECURE = False
-# CSRF_COOKIE_SECURE = False
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+#SESSION_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE = True
 # NIE ZAPOMNIJ ICH PRZYWRÓCIĆ DO POPRZEDNIEGO STANU KIEDY ROBISZ COMMITA!
 
 LOGIN_REDIRECT_URL = 'home_page'
@@ -165,8 +165,8 @@ LOGOUT_REDIRECT_URL = 'home_page'
 
 # Jeśli zamierzasz bawić się na serwerze lokalnym, to:
 # Usuń tutaj komentarz:
-# SECURE_SSL_REDIRECT = False
+SECURE_SSL_REDIRECT = False
 # Dodaj komentarz tutaj:
-SECURE_SSL_REDIRECT = True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#SECURE_SSL_REDIRECT = True
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # NIE ZAPOMNIJ ICH PRZYWRÓCIĆ DO POPRZEDNIEGO STANU KIEDY ROBISZ COMMITA!

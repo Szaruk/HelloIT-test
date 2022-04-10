@@ -33,7 +33,7 @@
             {% else %}
             {% for project in projects %}
             <a href="{% url 'projects_view' project.slug_field %}">
-              <img class="mx-sm-5 mx-3" src="{{project.preview_img}}"
+              <img class="mx-sm-5 mx-3" src="{{project.preview_img.url}}"
                alt="{{project.project_name}}, tworzony przez {{project.team_name.team_name}}"
                title="{{project.project_name}}, tworzony przez {{project.team_name.team_name}}" />
             </a>
@@ -63,7 +63,7 @@
             {% else %}
             {% for otherproject in otherprojects %}
             <a href="{% url 'projects_view2' otherproject.slug_field %}">
-              <img class="mx-sm-5 mx-3" src="{{otherproject.preview_img}}"
+              <img class="mx-sm-5 mx-3" src="{{otherproject.preview_img.url}}"
                alt="{{otherproject.project_name}}, stworzony przez {{otherproject.creators_name}}"
                title = "{{otherproject.project_name}}, stworzony przez {{otherproject.creators_name}}" />
             </a>

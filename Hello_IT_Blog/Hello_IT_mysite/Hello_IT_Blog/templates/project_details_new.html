@@ -8,13 +8,15 @@
 
 
 {% block photo_gallery %}
-      <div class="col-lg-8 col-11 foto-border">
-        <img class="img-fluid rounded" src="{{image.img}}" alt="" />
-        <!-- Exit -->
-        <i class="bi bi-x-square-fill exit-box"></i>
-        <!-- Arrow --->
-        <i class="bi bi-arrow-left-square-fill"></i>
-        <i class="bi bi-arrow-right-square-fill"></i>
+      <div class="col-12 d-none justify-content-center align-items-center foto-box">
+        <div class="col-lg-8 col-11 foto-border">
+          <img class="img-fluid rounded" src="{{image.img.url}}" alt="" />
+          <!-- Exit -->
+          <i class="bi bi-x-square-fill exit-box"></i>
+          <!-- Arrow --->
+          <i class="bi bi-arrow-left-square-fill"></i>
+          <i class="bi bi-arrow-right-square-fill"></i>
+        </div>
       </div>
 {% endblock %}
 
@@ -43,7 +45,7 @@
         {% for image in project.projectimg_set.all %}
         <img
           class="img-fluid foto-gallery my-4 mx-2 rounded"
-          src="{{image.img}}"
+          src="{{image.img.url}}"
           alt=""
         />
         {% endfor %}
@@ -59,5 +61,5 @@
 {% endblock %}
 
 {% block scripts %}
-    <!--<script src="{% static '/js/project_details.js' %}"></script>-->
+    <script src="{% static '/js/project_details.js' %}"></script>
 {% endblock %}

@@ -73,7 +73,7 @@
       </ul>
     </div>
 
-    <div class="col-12">
+    <div class="col-12" id="baner">
       <div
         id="carouselExampleControls"
         class="carousel slide position-relative"
@@ -81,15 +81,14 @@
       >
         <div class="carousel-inner">
           <div class="carousel-item active">
+            <img src="{% static 'img/game_jam_2022.png' %}" class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
             <img src="{% static 'img/logo.jpg' %}" class="d-block w-100" alt="..." />
           </div>
           <div class="carousel-item">
             <img src="{% static 'img/logo.png' %}" class="d-block w-100" alt="..." />
           </div>
-          <!--
-          <div class="carousel-item">
-            <img src="{% static 'img/logo.png' %}" class="d-block w-100" alt="..." />
-          </div>-->
         </div>
 
         <button
@@ -121,18 +120,18 @@
 
       <!-- Category -->
       <div
-        class="py-5 category-main d-flex justify-content-center align-items-center"
+        class="py-5 category-main d-flex justify-content-row align-items-center"
       >
-        <div class="category-container d-flex align-items-center">
-          <div class="category-button shadow white_url">
-            <span><i class="bi bi-list-ul"></i><a href="{% url 'home_page' %}"> Wszystkie</a></span>
+        
+          <div class="category-button shadow">
+            <span><i class="bi bi-list-ul"></i><a href="{% url 'home_page' %}" style="color: white;"> Wszystkie</a></span>
           </div>
           {% for item in cat_menu %}
-          <div class="category-button shadow white_url">
-            <span><i class="bi bi-people"></i><a href="{% url 'category' item%}">{{ item }}</a></span>
+          <div class="category-button shadow">
+            <span><i class="{{ item.icon }}"></i><a href="{% url 'category' item%}" style="color: white;"> {{ item }}</a></span>
           </div>
           {% endfor %}
-        </div>
+        
       </div>
 
       <!--- Posts --->
@@ -144,14 +143,14 @@
         {% for post in object_list %}
         <a href="{% url 'post_details' post.slug_field %}">
           <div class="card shadow">
-            <img src="{{ post.header_image }}" class="card-img-top" alt="..." />
+            <img src="{{ post.header_image.url }}" class="card-img-top" alt="..." />
             <div class="card-body">
               <div class="card-title text-center h3 py-3">{{ post.title }}</div>
               <p class="card-text py-3">
                 {{ post.text|truncatechars_html:130 }}
               </p>
               <div
-                class="d-flex justify-content-between align-items-center fw-bold"
+                class="d-flex justify-content-between align-items-center fw-bold post-more-info"
               >
                 <p>{{ post.create_date }}</p>
                 <p class="d-flex align-items-center">
@@ -207,7 +206,8 @@
       <span>&copy 2022 Koło naukowe Hello IT</span>
       <span class="pe-3">
         <a href="https://www.facebook.com/HIThelloit" style="color: white"><i class="bi bi-facebook pe-4"></i></a>
-        <a href="mailto:hit.helloit@gmail.com" style="color: white"><i class="bi bi-envelope"></i></a>
+        <a href="mailto:hit.helloit@gmail.com" style="color: white"><i class="bi bi-envelope pe-4"></i></a>
+        <a href="https://www.instagram.com/hit_hello_it/" style="color:white"><i class="bi bi-instagram"></i></a>
       </span>
     </footer>
 

@@ -154,37 +154,17 @@ main .scrollUp i {
 }
 
 main .category-main {
-  overflow: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
   width: 100%;
   position: relative;
 }
 
-main .category-main span {
-  pointer-events: auto;
+main .category-main::-webkit-scrollbar {
+  display: none;
 }
 
-main .category-main .category-container {
-  opacity: 0;
-  width: 230%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  pointer-events: none;
-}
-
-@media screen and (max-width: 888px) {
-  main .category-main .category-container {
-    width: 140%;
-  }
-}
-
-@media screen and (max-width: 475px) {
-  main .category-main .category-container {
-    width: 230%;
-  }
-}
-
-main .category-main .category-container .category-button {
+main .category-main .category-button {
   font-size: 1.1rem;
   font-weight: bold;
   width: 15rem;
@@ -201,7 +181,7 @@ main .category-main .category-container .category-button {
   transition: transform 0.2s ease, -webkit-transform 0.2s ease;
 }
 
-main .category-main .category-container .category-button:hover {
+main .category-main .category-button:hover {
   cursor: pointer;
   -webkit-transform: translateY(10px);
           transform: translateY(10px);
@@ -238,14 +218,20 @@ main .card:hover {
   main .card {
     width: 18rem;
     margin-bottom: 1rem;
-    margin-left: 8px;
-    margin-right: 8px;
+    margin-left: 7px;
+    margin-right: 7px;
   }
 }
 
 @media screen and (min-width: 2560px) {
   main .card {
     width: 40rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  main .card .post-more-info {
+    font-size: 12px;
   }
 }
 
@@ -282,15 +268,6 @@ main .pagination .site-btn:nth-child(2):hover {
 
 main #postDetailsMore {
   opacity: 0;
-}
-
-main .post-more-link {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 main .post-more {
@@ -559,7 +536,7 @@ main .inner-members .outer-members .member::after {
   left: 0;
   position: absolute;
   width: 100%;
-  height: 99%;
+  height: 99.7%;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, transparent), to(rgba(0, 0, 0, 0.4)));
   background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.4));
 }

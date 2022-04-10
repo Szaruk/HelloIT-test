@@ -1,3 +1,4 @@
+from django.db.models import F
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView, TemplateView
 from .models import Post
@@ -106,7 +107,7 @@ class PeopleAboutView(ListView):
         context = super(PeopleAboutView, self).get_context_data(**kwargs)
         context['abouts'] = About.objects.all().order_by('-id')
         context['peoples'] = People.objects.all().order_by('id')
-        context['people_group'] = People.objects.exclude(people_team__isnull=True).order_by('id')
+        context['people_group'] = People.objects.exclude(people_team__isnull=True).order_by(F('people_photo').desc(nulls_last=True))
         return context
 
     def get_queryset(self):

@@ -7,6 +7,7 @@ from autoslug import AutoSlugField
 
 class Category(models.Model):
     name = models.CharField(max_length=50, unique=True)
+    icon = models.CharField(max_length=50, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -17,7 +18,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField('Tytuł', max_length=255)
-    header_image = models.TextField('Baner', null=True, blank=True)
+    header_image = models.ImageField(null=True, blank='True')
     text = models.TextField('Treść', default="")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     create_date = models.DateTimeField('Data utworzenia', default=timezone.now)
@@ -94,8 +95,7 @@ class Position(models.Model):
 class People(models.Model):
     people_name = models.CharField('Imię', max_length=30, help_text="Maks. 30 znaków")
     people_surname = models.CharField('Nazwisko', max_length=50, help_text="Maks. 50 znaków")
-    people_photo = models.TextField('Zdjęcie', default="", help_text="Wymiary min. 492px x 633px,"
-                                                                     " zostaw puste dla domyślnego zdjęcia", blank=True)
+    people_photo = models.ImageField(null=True, blank='True', help_text="Wymiary min. 492px x 633px")
     people_portfolio = models.TextField('Link do portfolio',
                                         default="", blank=True,
                                         help_text="Po kliknięciu w kafelek osoby, nastąpi przekierowanie na podany link"
@@ -125,7 +125,7 @@ class People(models.Model):
 class About(models.Model):
     div_id = models.CharField(max_length=20, help_text="Maks. 20 znaków, małe litery, zamiast spacji podkreślniki. "
                                                        "Musi być unikatowy.", unique=True)
-    img = models.TextField(default="", help_text="Wysokość 150px.")
+    img = models.ImageField(null=True, blank='True', help_text="Wysokość 150px.")
     title = models.CharField(max_length=50, help_text="Maks. 50 znaków")
     content = models.TextField(default="")
 
@@ -137,8 +137,8 @@ class About(models.Model):
 
 
 class Project(models.Model):
-    banner_img = models.TextField('Baner', default="", help_text="Baner na górze szczegółów projektu. Wysokość 400px.")
-    preview_img = models.TextField('Miniaturka', default="", help_text="Grafika na kafelku projektu. "
+    banner_img = models.ImageField('Baner',null=True, blank='True', default="", help_text="Baner na górze szczegółów projektu. Wysokość 400px.")
+    preview_img = models.ImageField('Miniaturka',null=True, blank='True', default="", help_text="Grafika na kafelku projektu. "
                                                                        "Szer. 350px, wys. 200px.")
     project_name = models.CharField('Nazwa projektu', max_length=100, help_text="Maks. 100 znaków")
     team_name = models.ForeignKey(Team, on_delete=models.CASCADE, verbose_name="Nazwa drużyny")
@@ -166,8 +166,8 @@ class Project(models.Model):
 
 
 class OtherProject(models.Model):
-    banner_img = models.TextField('Baner', default="", help_text="Baner na górze szczegółów projektu. Wysokość 400px.")
-    preview_img = models.TextField('Miniaturka', default="", help_text="Grafika na kafelku projektu. "
+    banner_img = models.ImageField('Baner',null=True, blank='True', default="", help_text="Baner na górze szczegółów projektu. Wysokość 400px.")
+    preview_img = models.ImageField('Miniaturka',null=True, blank='True', default="", help_text="Grafika na kafelku projektu. "
                                                                        "Szer. 350px, wys. 200px.")
     project_name = models.CharField('Nazwa projektu', max_length=100, help_text="Maks. 100 znaków")
     creators_name = models.TextField('Twórca(y)', default="", help_text="Twórcy projektu", blank=True, null=True)
@@ -197,7 +197,7 @@ class OtherProject(models.Model):
 class ProjectImg(models.Model):
     reference = models.ForeignKey(Project, on_delete=models.CASCADE,
                                   help_text="Wybierz do którego postu chcesz dodać sekcję")
-    img = models.CharField('Obrazek', default="", help_text="To samo się skaluje.", max_length=255)
+    img = models.ImageField('Obrazek',null=True, blank='True', default="", help_text="To samo się skaluje.", max_length=255)
     help_title = models.CharField('Nazwa obrazka', max_length=50,
                                   default="", help_text="Pomocniczy tytuł do bazy danych. Max. 50 znaków")
 
@@ -218,7 +218,7 @@ class ProjectImg(models.Model):
 class OtherImg(models.Model):
     reference = models.ForeignKey(OtherProject, on_delete=models.CASCADE,
                                   help_text="Wybierz do którego postu chcesz dodać sekcję")
-    img = models.CharField('Obrazek', default="", blank=True, help_text="To samo się skaluje.", max_length=255)
+    img = models.ImageField('Obrazek', null=True, default="", blank=True, help_text="To samo się skaluje.", max_length=255)
     help_title = models.CharField('Tytuł pomocniczy',
                                   default="", max_length=50, help_text="Pomocniczy tytuł do bazy danychMax. 50 znaków")
 
